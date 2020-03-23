@@ -7,7 +7,6 @@ dim(imdb_data)
 imdb_data$len_of_movie <- str_length(imdb_data$title) 
 str(imdb_data)
 
-help(subset)
 
 #---------------1.Genere combinations for each type year on year------------------------
 
@@ -88,7 +87,7 @@ high_gross <- function(meta_data){
     top_10_gross <- sort %>% group_by(title_year,genres) %>%
       summarise(meanTop10rating = mean(imdb_score[imdb_score>=quantile(imdb_score, 0.9)]))  %>% 
       arrange(desc(title_year)) %>% top_n(10,title_year)
-  return(top)
+    return(top_10_gross)
 }
 high_gross(meta_data)
 
